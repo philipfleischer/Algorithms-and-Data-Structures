@@ -26,7 +26,8 @@ def main():
     path = Path(arg)
     if not path.is_absolute():
         path = base / path
-    
+
+    #sorted_array = [0,1,2,3,4,5,6,7,8,9,10]
     sorted_array = _read_file_to_list(str(path))
     balanced_print_tree(sorted_array)
 

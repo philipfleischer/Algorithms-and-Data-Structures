@@ -1,8 +1,8 @@
 from pathlib import Path
 import sys
 """
-To test the program:
-python3 oppg1.py < inputs/eksempel_input
+To test the program, ex.:
+python3 oppg1.py inputs/eksempel_input
 """
 
 class TreeNode:
@@ -11,6 +11,7 @@ class TreeNode:
         self._left = None
         self._right = None
     
+    #Made this function to better understand the debugging objects when 'run and debug'-ing
     def __repr__(self) -> str:
         return f"TreeNode(data={self._data}, left_child={self._left}, right_child={self._right})"
     
@@ -116,20 +117,20 @@ class SetBST:
         lines: list[str] = []
 
         #NOTE: Should i reuse this somewhere else?
-        def traverse(node: TreeNode, depth: int = 0, side: str = "root"):
+        def traverse(tree_node: TreeNode, depth: int = 0, side: str = "root"):
             indent = "  " * depth
-            lines.append(f"{indent}{side}: {node.key}")
-            if node.left:
-                traverse(node.left, depth + 1, "L")
-            if node.right:
-                traverse(node.right, depth + 1, "R")
+            lines.append(f"{indent}{side}: {tree_node._data}")
+            if tree_node._left:
+                traverse(tree_node._left, depth + 1, "L")
+            if tree_node._right:
+                traverse(tree_node._right, depth + 1, "R")
 
         traverse(self._root)
         return "SetBST(\n" + "\n".join(lines) + "\n)"
 
         
 
-    #Just for fun!
+    #Just for fun! Not a function needed for the assignment
     def print_tree_ascii(self) -> None:
         root = self._root
         """print tree horizontally with ASCII-branches."""
@@ -141,6 +142,7 @@ class SetBST:
         def _print(node, prefix="", is_leaf=True):
             if node is None:
                 return
+            #Branch illustrations
             connector = "└── " if is_leaf else "├── "
             print(prefix + connector + str(data(node)))
             #add the children (wrote it in a new and interesting compact form)
@@ -155,27 +157,31 @@ class SetBST:
 
 
 def file_to_SetBST(filename: str, bst: SetBST) -> None:
-        with open(filename, "r") as f:
-            iterations = int(f.readline())
-            for _ in range(iterations):
-                line = f.readline()
-                line_split = line.strip().split(" ")
-                if line_split[0] == "contains": print("true" if bst.contains(int(line_split[1])) else "false")
-                elif line_split[0] == "insert": bst.insert(int(line_split[1]))
-                elif line_split[0] == "remove": bst.remove(int(line_split[1]))
-                elif line_split[0] == "size": print(bst.size())
-                else: pass
+    """Function to print the results. Read from file and compute on keywords. """
+    with open(filename, "r") as f:
+        iterations = int(f.readline())
+        for _ in range(iterations):
+            line = f.readline()
+            line_split = line.strip().split(" ")
+            if line_split[0] == "contains": print("true" if bst.contains(int(line_split[1])) else "false")
+            elif line_split[0] == "insert": bst.insert(int(line_split[1]))
+            elif line_split[0] == "remove": bst.remove(int(line_split[1]))
+            elif line_split[0] == "size": print(bst.size())
+            else: pass
 
 
 def main():
     my_setbst = SetBST()
     #file = sys.stdin.read().strip().split()
+    #Needed to do it this way, since I got errors about the directory not existing
     base = Path(__file__).parent
     arg = sys.argv[1]
     path = Path(arg)
     if not path.is_absolute():
         path = base / path
     file_to_SetBST(str(path), my_setbst)
+
+    #Optional if we want to print the tree
     #print("\nPrinting SetBST structure using ASCII values to terminal:\n")
     #my_setbst.print_tree_ascii()
 

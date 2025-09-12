@@ -12,6 +12,7 @@ class TreeNode:
         self._right = None
         self._height = 0
 
+    #Made this function to better understand the debugging objects when 'run and debug'-ing
     def __repr__(self) -> str:
         return f"TreeNode(data={self._data}, height={self._height}, left_child={self._left._data if self._left else None}, right_child={self._right._data if self._right else None})"
 
@@ -108,25 +109,14 @@ class SetAVL:
 
 
     def _right_rotate(self, tree_node: TreeNode) -> TreeNode:
-        #child_node_left = tree_node._left
-        #child_left_right = child_node_left._right
+        child_node_left = tree_node._left
+        child_left_child_right = child_node_left._right
 
-        #child_node_left = tree_node
-        #tree_node = child_left_right
-
-        #self._update_height(tree_node)
-        #self._update_height(child_node_left)
-
-        #return child_node_left
-
-        x = tree_node._left
-        T2 = x._right
-
-        x._right = tree_node
-        tree_node._left = T2
+        child_node_left._right = tree_node
+        tree_node._left = child_left_child_right
         self._update_height(tree_node)
-        self._update_height(x)
-        return x
+        self._update_height(child_node_left)
+        return child_node_left
     
     def _balance_factor(self, tree_node: TreeNode) -> int:
         if not tree_node:
@@ -151,13 +141,13 @@ class SetAVL:
         
         lines: list[str] = []
 
-        def traverse(tree_node: TreeNode, depth: int = 0, side: str = "root"):
+        def traverse(tree_node: TreeNode, depth: int = 0, node_description: str = "root"):  #Start at the Root
             indent = "  " * depth
-            lines.append(f"{indent}{side}: {tree_node._data} (h={tree_node._height})")
+            lines.append(f"{indent}{node_description}: {tree_node._data} (h={tree_node._height})")
             if tree_node._left:
-                traverse(tree_node._left, depth + 1, "L")
+                traverse(tree_node._left, depth + 1, "L")   #Left child
             if tree_node._right:
-                traverse(tree_node._right, depth + 1, "R")
+                traverse(tree_node._right, depth + 1, "R")  #Right child
 
         traverse(self._root)
         return "SetAVL(\n" + "\n".join(lines) + "\n)"
@@ -166,6 +156,7 @@ class SetAVL:
     def print_tree_ascii(self) -> None:
         root = self._root
         """print tree horizontally with ASCII-branches."""
+        #getattr() func is used to get and compare attributes
         def data(n): return getattr(n, "data", getattr(n, "_data", None))
         def left(n): return getattr(n, "left", getattr(n, "_left", None))
         def right(n): return getattr(n, "right", getattr(n, "_right", None))
@@ -173,8 +164,10 @@ class SetAVL:
         def _print(node, prefix="", is_leaf=True):
             if node is None:
                 return
+            #Branch illustrations
             connector = "└── " if is_leaf else "├── "
             print(prefix + connector + str(data(node)))
+            #add the children (wrote it in a new and interesting compact form)
             children = [c for c in (left(node), right(node)) if c is not None]
             for i, child in enumerate(children):
                 last = (i == len(children) - 1)
@@ -185,6 +178,7 @@ class SetAVL:
 
 
 
+#Same as oppg1a.py - file_to_SetBST
 def file_to_SetAVL(filename: str, bst: SetAVL) -> None:
         with open(filename, "r") as f:
             iterations = int(f.readline())
@@ -207,6 +201,8 @@ def main():
     if not path.is_absolute():
         path = base / path
     file_to_SetAVL(str(path), my_setavl)
+
+    
     #print("\nPrinting SetAVL structure using ASCII values to terminal:\n")
     #my_setavl.print_tree_ascii()
 
