@@ -13,7 +13,7 @@ Philip Elias Fleischer (philipef@ifi.uio.no)
 ## Pseudocode for balanced_print_tree
 
     Procedure balanced_print_tree(array)
-    #Assumtions: sorted and indexable array
+    #Assumptions: sorted and indexable array
         low <- 0
         high <- len(array) - 1
 
