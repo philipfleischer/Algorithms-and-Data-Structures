@@ -1,0 +1,12 @@
+balansert_tre(array):
+    lag_balansert_tre(v, h):
+        if v > h:
+             return
+    
+        midt = (v + h) // 2
+        lag_balansert_tre(v, midt -1)
+        lag_balansert_tre(midt + 1, h)
+        print array-et sitt midtpunkt
+    kaller rekursivt lag_balansert_tre(0, lengde av array-et - 1)
+
+balansert_tre(array)

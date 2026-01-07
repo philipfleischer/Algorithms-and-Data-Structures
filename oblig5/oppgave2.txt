@@ -1,0 +1,39 @@
+Pseudokode for Binary search tree, Oppgave 2a)
+
+Binaert_Soke_Tre(sortert_liste):
+    lag_binaert_Tre(hoyre, venstre):
+        hvis venstre > hoyre:
+            return None
+    
+        midtpunkt <-- (sortert_liste) / 2
+        print ut liste sitt midtpunkt
+        lag_binaert_Tre(venstre, midtpunkt - 1)
+        lag_binaert_Tre(midtpunkt + 1, hoyre)
+
+    lag_binaert_Tre (0 til lengden av listen -1)
+
+Binaert_Soke_Tre(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+
+
+
+Pseudokode for Binary search tree med heap, Oppgave 2b)
+
+lag_balanse(array):
+    ny tom heap []
+
+    innsetting(lav, hoy):
+        if lav > hoy:
+            return
+        
+        midt = (lav + hoy) //2
+        array-et sitt midtpunkt --> heap
+
+        innsetting(lav, midt - 1)
+        innsetting(midt + 1, hoy)
+    
+    rekursivt for innsetting(0, lengde av array-et - 1)
+
+    return heap
+
+    

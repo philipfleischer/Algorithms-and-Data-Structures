@@ -1,0 +1,185 @@
+Kan du finne et eksempel der lengden på den korteste stien og den chilleste stien er stor?
+
+
+For å finne et konkret eksempel der forskjellen mellom den korteste stien og den chilleste stien er stor, må vi konstruere en graf hvor:
+
+	1.	Korteste sti: Måles i antall skuespillere mellom to noder (skuespillere). Denne stien vil ha færrest antall noder.
+	2.	Chilleste sti: Måles i filmkvalitet (rating). Her ønsker vi at vekten på stien er minst mulig, det vil si at stien går gjennom filmer med høy rating, selv om det innebærer å ta flere steg (skuespillere).
+
+Tenkt eksempel:
+
+La oss anta at vi har fem skuespillere og seks filmer, som representeres som noder og kanter i en graf.
+
+Skuespillere og filmer:
+
+	•	A, B, C, D, E er skuespillere.
+	•	En kant mellom to skuespillere betyr at de har spilt i en film sammen.
+	•	Vekten på en kant = 10 - filmrating. Høyere filmrating gir lavere vekt, noe som gjør stien mer “chill”.
+
+Filmdata (rating, vekt):
+
+	1.	A og B spilte i en film med rating 4.0 (vekt = 6.0).
+	2.	B og C spilte i en film med rating 3.0 (vekt = 7.0).
+	3.	C og D spilte i en film med rating 2.0 (vekt = 8.0).
+	4.	A og E spilte i en film med rating 9.0 (vekt = 1.0).
+	5.	E og D spilte i en film med rating 9.5 (vekt = 0.5).
+
+Oppsett:
+
+	•	Mål: Vi vil finne den korteste stien og den chilleste stien fra A til D.
+
+Korteste sti mellom A og D:
+
+Den korteste stien måles i antall noder (skuespillere).
+
+	•	A → B → C → D er den korteste stien. Den går gjennom 3 kanter (filmer).
+
+Totalt antall steg: 3.
+
+Chilleste sti mellom A og D:
+
+Den chilleste stien måles i sum av vektene (filmkvalitet). Her prøver vi å minimere vekten ved å gå gjennom filmer med høyere rating.
+
+	•	A → E → D er den chilleste stien.
+	•	Filmen mellom A og E har rating 9.0 (vekt = 1.0).
+	•	Filmen mellom E og D har rating 9.5 (vekt = 0.5).
+	•	Total vekt for denne stien: 1.0 + 0.5 = 1.5.
+
+Totalt antall steg: 2.
+
+Resultat:
+
+	•	Korteste sti: A → B → C → D, 3 steg.
+	•	Chilleste sti: A → E → D, 2 steg, med en mye lavere totalvekt (1.5) enn stien gjennom B og C.
+
+Sammenligning:
+
+I dette eksempelet er forskjellen i stilengde ikke veldig stor, men hvis vi hadde flere skuespillere koblet sammen med filmer med varierende kvalitet, kunne chilleste stien krevd mange flere steg, for eksempel:
+
+	•	En sti som går via mange mellomledd med høy kvalitet (rating), i stedet for en direkte, kort sti med dårlig kvalitet.
+
+Poenget er at selv om den chilleste stien kan ha flere noder, kan den veie betydelig mindre enn den korteste stien.
+
+
+
+
+
+
+Kan du finne en god alternativ vektfunksjon for å finne chilleste vei? Kanskje kan man
+benytte seg av antall stemmer?
+
+
+Ja, det å benytte seg av antall stemmer (votes) i tillegg til eller i stedet for filmrating kan være en god alternativ vektfunksjon for å finne den “chilleste” veien mellom skuespillere. Antall stemmer reflekterer hvor populær eller hvor bredt anerkjent en film er, noe som kan være en verdifull indikator på “kvaliteten” av en film, uavhengig av den rene ratingen.
+
+Forslag til vektfunksjoner:
+
+1. Vekt basert på rating og antall stemmer kombinert:
+
+Dette kan være en kombinasjon av både rating og antall stemmer for å balansere mellom filmens kvalitet og hvor mange som har likt den. Her er noen alternativer:
+
+a) Vekt med vektet snitt av rating og antall stemmer:
+
+En mulig formel kan være:
+￼
+
+	•	(10 - rating): Denne delen sørger for at høyere rating gir lavere vekt (bedre vei).
+	•	￼: Logaritmen brukes for å jevne ut store forskjeller i stemmetall. Hvis en film har svært mange stemmer, vil dette redusere vekten ytterligere, og gi en fordel for populære filmer.
+
+Ved å bruke denne formelen, vil både filmer med høy rating og mange stemmer gi en lav vekt, noe som vil gjøre stien gjennom slike filmer mer attraktiv.
+
+b) Kun basert på antall stemmer:
+
+Hvis vi ønsker å fokusere kun på popularitet, kan vekten være omvendt proporsjonal med antall stemmer:
+￼
+Her vil filmer med flere stemmer gi lavere vekt, og dermed være foretrukket.
+
+2. WILSON score-baserte vekt:
+
+En mer sofistikert tilnærming er å bruke en Wilson score som kombinerer rating og antall stemmer for å gi et mer statistisk forsvarlig mål på “chill”-faktoren. Wilson score tar hensyn til både kvaliteten (rating) og antall stemmer, og justerer for usikkerheten i vurderingene.
+
+Formelen for Wilson score er:
+￼
+Der:
+
+	•	rating er filmens gjennomsnittlige rating.
+	•	n er antall stemmer.
+	•	Z er en konfidensfaktor (f.eks. 1.96 for 95 % konfidensintervall).
+
+Vi kan bruke denne Wilson score som et mål for vekten til en film i grafen. Filmer med høy Wilson score gir lavere vekt og regnes som mer “chill”.
+
+3. Vektfunksjon basert på et produkt av rating og antall stemmer:
+
+En annen enkel metode kan være å bruke produktet av rating og antall stemmer for å lage en vekt:
+￼
+Dette sørger for at filmer med høy rating og mange stemmer har lavere vekt, noe som favoriserer filmer som er både populære og godt likt.
+
+Eksempel på vektfunksjon i kode:
+
+Vi kan prøve følgende formel som en kombinasjon av rating og stemmer:
+
+def vekt(rating, stemmer):
+    return (10 - rating) / (1 + math.log(1 + stemmer))
+
+Her vil lavere vekt gi en “chillere” vei. En film med mange stemmer og høy rating vil gi en lavere vekt, og dermed foretrekkes i “chilleste” sti-beregninger.
+
+Konklusjon:
+
+Bruk av antall stemmer som en del av vektfunksjonen gir en mer balansert tilnærming til hva som regnes som en “chill” film, siden filmer med mange stemmer gjerne har bred anerkjennelse. En god vektfunksjon kan kombinere både rating og stemmer, slik at vi finner de filmene som er både godt likt og populære.
+
+
+
+
+
+
+
+
+
+
+Hvor mange filmer må man inkludere for at den største komponenten fremdeles er bevart
+(eventuelt, hvor mange filmer kan fjernes)?
+
+
+
+For å finne ut hvor mange filmer man må inkludere (eller hvor mange som kan fjernes) for at den største komponenten fremdeles er bevart, kan vi tenke på grafen av skuespillere og filmer som et nettverk der noder representerer skuespillere, og kanter representerer samarbeid mellom skuespillere i en felles film.
+
+Dette er et komplekst problem som handler om nettverksrobusthet, altså hvor sterkt den største komponenten (det største sammenhengende nettverket av skuespillere) er bundet sammen via felles filmer. Hovedmålet er å vurdere hvor mange filmer man kan fjerne før den største komponenten brytes opp eller hvor få filmer man trenger for å beholde denne komponenten.
+
+Metodikk for å finne svaret
+
+	1.	Identifisere den største komponenten:
+Først må vi finne den største komponenten i grafen. Dette er gruppen av skuespillere som er koblet sammen gjennom felles filmer.
+	2.	Simulere fjerning av filmer:
+Ved å fjerne filmer fra grafen, vil vi redusere antallet forbindelser (kanter) mellom skuespillerne. Hvis vi fjerner en film som knytter sammen flere skuespillere, kan det føre til at noen skuespillere blir isolert eller splittet fra den største komponenten.
+	3.	Vurdere kritiske filmer:
+Noen filmer kan være mer kritiske enn andre for å holde den største komponenten sammen. For eksempel, hvis en film knytter sammen to store grupper av skuespillere, vil fjerning av denne filmen ha stor effekt på komponentens størrelse.
+	4.	Telle hvor mange filmer kan fjernes:
+Når vi fjerner filmer, følger vi nøye med på om den største komponenten fremdeles eksisterer. Vi ønsker å finne ut hvor mange filmer som kan fjernes før den største komponenten går i oppløsning.
+
+Konkret tilnærming
+
+For å finne dette svaret i praksis kan vi bruke en algoritme som følger disse trinnene:
+
+	1.	Finn den største komponenten ved hjelp av BFS eller DFS:
+	•	Bygg grafen der skuespillere er noder og filmer er kanter mellom dem.
+	•	Bruk BFS eller DFS for å finne alle sammenhengende komponenter i grafen.
+	•	Identifiser den største komponenten.
+	2.	Sorter filmer etter viktighet:
+	•	En film er viktig hvis den knytter sammen mange skuespillere som ellers ville være isolert.
+	•	Sorter filmene etter deres viktighet, som kan måles ved antall unike forbindelser de bidrar til.
+	3.	Fjern filmer én etter én:
+	•	Start med å fjerne de minst viktige filmene.
+	•	Etter hver fjerning, sjekk om den største komponenten fortsatt eksisterer.
+	•	Når den største komponenten brytes opp, har du funnet hvor mange filmer som måtte være inkludert for å bevare den største komponenten.
+
+En teoretisk vurdering
+
+I et typisk nettverk som IMDB-grafen (som er en skala-fri graf), vil de fleste noder ha få forbindelser, mens noen få noder (de mest kjente skuespillerne og populære filmene) vil ha mange forbindelser. Dette betyr at noen filmer kan være svært sentrale for å holde nettverket sammen, og fjerning av disse vil ha en dramatisk effekt på komponentstrukturen.
+
+For en praktisk implementering kan du bruke algoritmer som min-cut eller betweenness centrality til å finne hvilke filmer som er mest sentrale for å bevare forbindelser i nettverket.
+
+Hvis du vil implementere dette i praksis, må du:
+
+	•	Analysere nettverket av skuespillere og filmer.
+	•	Utføre simuleringer av fjerning av filmer.
+
+Det nøyaktige antallet filmer som kan fjernes før den største komponenten brytes opp, avhenger av strukturen på IMDB-grafen du bruker, men dette kan estimeres gjennom simuleringer som nevnt over.

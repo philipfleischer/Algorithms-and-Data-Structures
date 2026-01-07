@@ -1,0 +1,14 @@
+Binærsøk med lenkede lister)
+
+Besvarelse:
+For å analysere kjøretiden, så ser vi først på at variablene 'low' <-- 0 og 'high' <-- (lengden av den lenkede listen) -1.
+Deretter ser vi at den lenkede listen blir bearbeidet slik at i = (low + high) / 2, i det verste tilfellet vil dette gi en logaritmisk kjøretid, 
+altså O(log(n)).
+
+Hvis datastrukturen hadde vært et array, så ville kjøretiden ha vært konstant tid, O(1). Grunnen til dette er at array-er tillatter 'random access'.
+Siden vi forholder oss til en lenket liste der dette ikke er mulig vil vi måtte traversere gjennom listen fra den første noden og videre med nodenes pekere. 
+Grunnet dette vil et verste tilfelle gi O(n), altså lineær tid.
+
+
+Konklusjonen er at kjøretiden i et verste tilfelle scenario blir : O(log(n)) * O(n) = O(n * log(n))
+

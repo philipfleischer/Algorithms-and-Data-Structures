@@ -1,0 +1,137 @@
+#push_back(data): Sett elementet data inn bakerst i køen
+#push_front(data): Sett elementet data inn fremst i køen
+#push_middle(data): Sett elementet data inn i midten av køen. midt <-- (k+1) / 2
+#get(i)): Printer ut det i-te elementet i køen
+
+
+Oppgave 1a)
+
+class Node:
+    def init(self, data):
+        self. data <-- data
+        self. neste <-- None
+        self. forrige <-- None
+
+
+class Teque:
+    def init(self):
+        self.start <-- None
+        self.siste <-- None
+        self.stoerrelse <-- 0
+
+    def push_back(self, data):
+        ny_node <-- Node(data)
+        hvis self.start is None:
+            self.start <-- ny_node
+            self.siste <-- ny_node
+        ellers:
+            self.siste.neste <-- ny_node
+            ny_node.forrige <-- self.siste
+            self.siste <-- ny_node
+        self.stoerrelse += 1
+
+
+    def push_front(self, data):
+        ny_node <-- Node(data)
+        ny_node.neste <-- self.start
+        hvis self.start is not None:
+            self.start.forrige <-- ny_node
+        self.start <-- ny_node
+        hvis self.siste is None:
+                self.siste <-- ny_node
+        self.stoerrelse += 1
+
+
+    def push_middle(self, data):
+        ny_node <-- Node(data)
+
+        hvis self.start is None:
+            self.start <-- ny_node
+            self.siste <-- ny_node
+        ellers:
+            midtpunkt <-- (self.stoerrelse + 1) // 2
+            hvis midtpunkt er lik 0:
+                self.push_front(data)
+            ellers:
+                midl_node <-- self.get(midtpunkt)
+                venstre_midl_node <-- midl_node.forrige
+
+                hvis venstre_midl_node is not None:
+                    venstre_midl_node.neste <-- ny_node
+                    ny_node.forrige <-- venstre_midl_node
+                ellers:
+                    self.start <-- ny_node
+
+                ny_node.neste <-- midl_node
+                midl_node.forrige <-- ny_node
+        self.stoerrelse += 1
+
+
+    def get(self, i):
+        hvis i < self.stoerrelse // 2:
+            teller <-- 0
+            midlertidig_node <-- self.start
+            while midlertidig_node is not None:
+                hvis teller er lik i:
+                    return midlertidig_node
+                midlertidig_node <-- midlertidig_node.neste
+                teller += 1
+        ellers:
+            teller <-- self.stoerrelse - 1
+            midlertidig_node = self.siste
+            while midlertidig_node is not None:
+                hvis teller er lik i:
+                    return midlertidig_node
+                midlertidig_node = midlertidig_node.forrige
+                teller -= 1
+        return None
+
+    
+
+Oppgave 1c)
+-- Verste tilfelle analyse av samtlige funksjoner --
+
+#I analysen fjerner vi begrensningen på N, altså kan N være vilkårlig stor.
+
+Analyse av push_back)
+Siden vi kun går gjennom en while løkke her, så er kjøretiden lineær.
+I et verste tilfelle vil kjøretiden være O(n).
+
+Analyse av push_front)
+Denne prosedyren kjøres gjennom kun én gang og gjentas ikke uten flere kall.
+Grunnet dette er ne konstant kjøretid og i et verste tilfelle: O(1).
+
+Analyse av push_middle)
+Prosedyren bruker lineær tid, siden self.stoerrelse() gir O(n) tid,
+midtpunkt sin push.front() gir O(1) tid, self.get(midtpunkt) gir O(n)
+tid. Altså gir dette til sammen en verste kjøretid på O(n).
+
+Analyse av get)
+Kun en while-løkke operasjon kommer her, dermed er kjøretiden lineær.
+I et verste tilfelle blir det O(n).
+
+Analyse av stoerrelse)
+Også her er det kun en while-løkke, altså lineær tid.
+Verste tilfelle: O(n).
+
+
+
+
+Oppgave 1d)
+Grunnen til at det er viktig at vi ikke har begrensningen fra forrige deloppgave
+om at det høyeste tallet kan være 10^6 er, på grunn av at det ville 
+vært en konstant. Dermed ville alle O-notasjonen gitt konstant tid, altså O(1).
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+

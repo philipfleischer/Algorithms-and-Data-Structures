@@ -1,0 +1,124 @@
+Oppgave 2a)
+--- Pseudokode for funksjoner ---
+
+klasse Node():
+    node.data
+    node.neste
+    node.forrige
+
+
+prosedyre push_back(x):
+    ny_node <-- Node(x)
+
+    if hode = none:
+        hode <-- ny_node
+        return
+
+    midlertidig_node <-- hode
+
+    while midlertidig_node not none
+        midlertidig_node <-- midlertidig_node.neste
+    
+    midlertidig_node.neste <-- ny_node
+    ny_node.forrige <-- midlertidig_node
+
+
+
+prosedyre push_front(x):
+    ny_node <-- Node(x)
+    ny_node.neste <-- hode
+
+    if hode not none:
+        hode.forrige <-- ny_node
+    hode <-- ny_node
+
+
+prosedyre push_middle(x):
+    ny_node <-- Node(x)
+
+    if hode = none:
+        hode <-- ny_node
+        return
+
+    #Setter lengden av listen som en referanse 
+    #til en funksjon som beregner dette
+    lengde <-- stoerrelse()
+    midtpunkt <-- ((lengde + 1) // 2)
+
+    if midtpunkt is 0:
+        push_front(x)
+        return
+
+
+    hoyre_midtlertidig_node <-- get(midtpunkt)
+    venstre_midlertidig_node <-- hoyre_midtlertidig_node.forrige
+
+    if venstre_midlertidig_node is not none:
+        venstre_midlertidig_node.neste <-- ny_node
+        ny_node.forrige <-- venstre_midlertidig_node
+    else:
+        hode <-- ny_node
+
+    ny_node.neste <-- hoyre_midtlertidig_node
+    hoyre_midtlertidig_node.forrige <-- ny_node
+
+
+prosedyre get(i):
+    teller <-- 0
+    midlertidig_node <-- hode
+    if midlertidig_node = none:
+        return none
+
+    while midlertidig_node not none:
+        if teller = i:
+            return midlertidig_node
+        midlertidig_node = midlertidig_node.neste
+        teller += 1
+    return none
+
+prosedyre stoerrelse():
+    teller <-- 0
+    midlertidig_node <-- hode
+
+    while midlertidig_node not none:
+        teller += 1
+        midlertidig_node = midlertidig_node.neste
+    
+    return teller
+
+
+
+
+Oppgave 2c)
+-- Verste tilfelle analyse av samtlige funksjoner --
+
+#I analysen fjerner vi begrensningen på N, altså kan N være vilkårlig stor.
+
+Analyse av push_back)
+Siden vi kun går gjennom en while løkke her, så er kjøretiden lineær.
+I et verste tilfelle vil kjøretiden være O(n).
+
+Analyse av push_front)
+Denne prosedyren kjøres gjennom kun én gang og gjentas ikke uten flere kall.
+Grunnet dette er ne konstant kjøretid og i et verste tilfelle: O(1).
+
+Analyse av push_middle)
+Prosedyren bruker lineær tid, siden self.stoerrelse() gir O(n) tid,
+midtpunkt sin push.front() gir O(1) tid, self.get(midtpunkt) gir O(n)
+tid. Altså gir dette til sammen en verste kjøretid på O(n).
+
+Analyse av get)
+Kun en while-løkke operasjon kommer her, dermed er kjøretiden lineær.
+I et verste tilfelle blir det O(n).
+
+Analyse av stoerrelse)
+Også her er det kun en while-løkke, altså lineær tid.
+Verste tilfelle: O(n).
+
+
+
+
+Oppgave 2d)
+Grunnen til at det er viktig at vi ikke har begrensningen fra forrige deloppgave
+om at det høyeste tallet kan være 10^6 er, på grunn av at det ville 
+vært en konstant. Dermed ville alle O-notasjonen gitt konstant tid, altså O(1).

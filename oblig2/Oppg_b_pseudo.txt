@@ -1,0 +1,28 @@
+lag_balanse(array):
+    ny tom heap []
+
+    innsetting(lav, hoy):
+        if lav > hoy:
+            return
+        
+        midt = (lav + hoy) //2
+        array-et sitt midtpunkt --> heap
+
+        innsetting(lav, midt - 1)
+        innsetting(midt + 1, hoy)
+    
+    rekursivt for innsetting(0, lengde av array-et - 1)
+
+    return heap
+
+main():
+    array = input med heltall
+    ny tom heap []
+
+    for-løkke av tallene:
+        heappush(array[i])
+    
+    heap --> lag_balanse(array)
+    print heapen
+
+main()

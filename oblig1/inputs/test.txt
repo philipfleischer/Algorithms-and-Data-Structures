@@ -1,0 +1,8 @@
+python3 teque.py < inputs/eksempel_input
+
+python3 teque.py < inputs/input_100 | cmp - outputs/output_100
+
+$ java Teque < inputs/input_100 | cmp - outputs/output_100
+- outputs/output_100 differ: char 1, line 1
+
+Vi forventer ikke at programmet ditt er raskt nok til å håndtere alle testene. Løsningsforslaget løser input_1000000 på ca. 1 sekund.

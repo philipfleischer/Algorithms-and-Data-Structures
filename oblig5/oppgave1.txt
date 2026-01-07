@@ -1,0 +1,15 @@
+Oppgave 1 - Gi en verste tilfelle kjøretidsanalyse av algoritmen nedenfor, som implementerer binærsøk over
+lenkede lister. Hvordan påvirker valget av datastruktur kjøretidskompleksiteten i dette tilfellet?)
+
+Svar:
+i = (low+high) / 2 --> logaritmisk tid O(log(n))
+A.get(i) er i O(n) --> lineær tid
+
+Binærsøket: (low + high) / 2, gir logaritmisk kjøretid, så for hver get() operasjon
+som blir gjort, får vi O(n) ekstra i kjøretid, dermed vil dette utgjøre 
+O(n * log(n)) kjøretidskompleksitet i et verste tilfelle.
+
+Siden vi har en lenket liste så vil kjøretidskompleksiteten bli økt med lineær tid, grunnet
+at vi må traversere listen gjennom nodene én for én. Hadde det vært en vanlig liste med "random access", 
+så ville kjøretidskompleksiteten vært på O(log(n)).
+

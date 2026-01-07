@@ -1,0 +1,67 @@
+Spørsmål: Du skal redgjøre for hvilke sorteringsalgoritmer som er implementert, og hva som er testet for
+    å sjekke at alle algoritmene gir rimelige svar. Det skal skrives kort om hvordan bytter og sammenligninger er målt.
+
+- Som oppgaven beskrev har jeg brukt merge- og insertionsort, i tillegg har jeg selv valgt å bruke 
+    heap-sort som har en kjøretidskompleksitet på O(n log(n)), som oppgaven ba om og quick-sort algoritmen.
+- Insertion sort: Dette er en sorteringsalgoritme der en sortert liste blir bygget opp én verdi om gangen.
+    Et element blir sammenlignet med det tidligere elementetet og flyttet hvis det er logisk.
+    Kjøretidskompleksiteten er på O(n^2) i verste tilfelle, men i det beste tilfelle f.eks når det er snakk
+    om en sortert liste, så er kjøretiden på O(n)
+- Merge sort: Dette er en sorteringsalgoritme som rekursivt deler listen i to, deretter sorteres hver 
+    halvdel rekursivt og til slutt slår liste delene sammen.
+    Kjøretidskompleksiteten er på O(n log(n)) her i alle mulige tilfeller.
+- Quick sort: Dette er en sorteringsalgoritme som rekursivt deler listen. Et pivot-element blir valgt
+    samt to liste deler. Der den ene liste delen har elementer med lavere verdi enn pivot-elementet og
+    en liste del med større elementer.
+    Kjøretidskompleksiteten er på O(n^2) i verste tilfelle og ellers O(n log(n))
+- Heap sort: Dette er en sorteringsalgoritme som lager en heap av listen (der foreldrenoden er mindre eller lik barnenoden)
+    Det minste elementet av heapen blir trukket ut av heapen og lagt inn i den sorterte listen.
+    Kjøretidskompleksiteten er på O(n log(n)), grunnet logaritmiske funksjoner som gjentas.
+
+
+For å teste sorteringsalgoritmene har jeg tatt bruk av filen sort_runner.py, som tester:
+1. Teller sammenligninger: Ved å bruke klassen CountCompares() så har vi kunnet registrere antall
+    sammenligninger som de ulike sorteringsalgoritmene har brukt.
+2. Teller bytter: Ved bruk av klassen CountSwaps(), har vi brukt swaps() funksjonen i sorteringsalgoritmene
+    til å kunne registrere antall bytter som er blitt gjort i hver sorteringsalgoritme.
+3. Måler tid: Vi måler tiden det tar per sortering for de forskjellige algoritmene ved å starte og slutte å måle. 
+    Dermed kan vi subtrahere slutten mot start for å finne tiden det tok og registrere dette (i mikrosekunder).
+    Gjorde dette ved å bruke time.time_ns()-funksjonen.
+4. Lager resultater: Bruker testfiler til å teste sorteringsalgoritmene og skriver dette ut til en fil, der vi kan
+    se på resultatene vi har fått av de forskjellige algoritmene og hvordan de stemmer overens med forskjellige
+    filer. Resultatene blir kun skrevet ut for det som algoritmen får gjort innen 100 millisekunder.
+5. Sammenligninger av resultatene: Sjekke om resultatene fra de forskjellige sorteringsalgoritmene viser
+    forventede resultater med henhold til antall bytter, sammenligninger og tid. 
+    Vi foreventer at Insertion sort er mest effektiv på mindre nærmest sorterte lister, at Quick sort er for de i 
+    medium størrelse og at merge- og heap - sort er mest effektive for større filer. Dette grunnet kjøretidskompleksiteten.
+
+
+
+Vi ønsker at du gjør noen egne refleksjoner. Du må ta stilling til disse spørsmålene:
+• I hvilken grad stemmer kjøretiden overens med kjøretidsanalysene (store O) for de ulike
+algoritmene?
+    Svar:
+        Det virker som om det stemmer godt overens med de teoretiske kjøretidsanalysene.
+        Insertion sort yter best på mindre og mer sorterte lister.
+        Merge sort yter godt selv når n blir større.
+        Quick sort er relativt rask, i tilegg kan den bli raskere enn merge sort, avhengig av 
+        hvor godt pivot-elementet er plassert.
+        Heap sort er gjennomsnittlig en pålitelig og sikker algoritme, men denne stabiliteten 
+        fører til at den ikke alltid er raskest.
+• Hvordan er antall sammenligninger og antall bytter korrelert med kjøretiden?
+    Svar: 
+        Det har en direkte korrelasjon til kjøretiden. Jo flere bytter og sammenligninger en
+        algoritme har desto høyere blir kjøretiden. 
+• Hvilke sorteringsalgoritmer utmerker seg positivt når n er veldig liten? Og når n er veldig
+stor?
+    Svar: 
+        Når n er veldig liten så egner Insertion sort seg best.
+        Når n er veldig stor så egner merge sort seg ofte best (noen ganger quick sort).
+• Hvilke sorteringsalgoritmer utmerker seg positivt for de ulike inputfilene?
+    Svar: 
+        For filene som er nært sortert utmerker Insertion sort seg positivt.
+        For filene som er tilfeldig sortert, så utmerker quick sort og merge sort seg positivt.
+• Har du noen overraskende funn å rapportere?
+    Svar:
+        Jeg så at quick-sort på visse sorterte filer var fryktelig tregt, det er nok på grunn av 
+        at pivot-elementet ikke ble valgt helt optimalt.
