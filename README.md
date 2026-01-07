@@ -3,20 +3,18 @@
 ## IN2010 – Algorithms and Data Structures (UiO)
 
 This repository contains my coursework for **IN2010 – Algorithms and Data Structures** at the University of Oslo (UiO).
-It includes **five graded submissions (Innlevering 1–5)** and a **Notes** folder with supporting material (summaries, explanations, and references used during the course).
+It includes **five graded submissions (Project 1–5)** and a **Notes** folder with supporting material (summaries, explanations, and references used during the course).
 
 All projects are preserved with complete Git history from the original UiO repositories.
 
-| Project       | Description                                                                 | Browse                                                                            | Commit History                                                                             |
-| ------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Innlevering 1 | Teque (triple-ended queue): push_front/back/middle + get with efficient ops | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/oblig1) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Innlevering 2 | Efficient Sets using BST + AVL, plus building balanced BST insertion order  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/oblig2) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Innlevering 3 | Kattunge (tree path to root) + sorting algorithms + performance metrics     | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/oblig3) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Innlevering 4 | IMDB graph: build large graph, shortest paths, weighted “chill” paths, CCs  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/oblig4) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Innlevering 5 | Mandatory submission: analysis + balanced BST + sorting + IMDB graph tasks  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/oblig1) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Notes         | Course notes: key concepts, summaries, and quick references                 | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/Notes)  | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-
-⸻
+| Project   | Description                                                                 | Browse                                                                                      | Commit History                                                                             |
+| --------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Project 1 | Teque (triple-ended queue): push_front/back/middle + get with efficient ops | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig1) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| Project 2 | Efficient Sets using BST + AVL, plus building balanced BST insertion order  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig2) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| Project 3 | Kattunge (tree path to root) + sorting algorithms + performance metrics     | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig3) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| Project 4 | IMDB graph: build large graph, shortest paths, weighted “chill” paths, CCs  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig4) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| Project 5 | Mandatory submission: analysis + balanced BST + sorting + IMDB graph tasks  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig5) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| Notes     | Course notes: key concepts, summaries, and quick references                 | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/Notes)  | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
 
 ## Course focus
 
@@ -32,8 +30,6 @@ The course covers fundamental data structures and algorithms with emphasis on:
 
 All solutions are implemented with correctness, efficiency, and clarity as primary goals.
 
-⸻
-
 ## Techniques and algorithms used
 
 Across the submissions, the following techniques and algorithms are implemented and analyzed:
@@ -46,8 +42,6 @@ Across the submissions, the following techniques and algorithms are implemented 
 - Breadth-first search (BFS) for shortest paths in unweighted graphs
 - Dijkstra’s algorithm for weighted shortest paths
 - Graph traversal for connected component analysis
-
-⸻
 
 ## Graph processing at scale
 
@@ -62,8 +56,6 @@ based on IMDB data:
 
 This provides hands-on experience with performance constraints that do not appear in small toy examples.
 
-⸻
-
 ## Repository structure
 
 IN2010-Algorithms-and-Data-Structures/
@@ -74,14 +66,10 @@ IN2010-Algorithms-and-Data-Structures/
 ├── oblig5/ # Mandatory combined submission
 └── Notes/ # Course notes, summaries, and references
 
-⸻
-
 ## Notes
 
 The `Notes/` directory contains personal summaries and explanations used during the course.
 These are intended as **learning material and quick reference**, not polished lecture notes.
-
-⸻
 
 ## Language and environment
 
@@ -89,8 +77,6 @@ These are intended as **learning material and quick reference**, not polished le
 - Standard libraries only, unless explicitly allowed
 - All programs are designed to be run from the command line
 - Input/output strictly follows the formats specified in each assignment
-
-⸻
 
 ## Academic context
 
