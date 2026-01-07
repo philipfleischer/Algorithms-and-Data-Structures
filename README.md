@@ -7,14 +7,14 @@ It includes **five graded submissions (Project 1–5)** and a **Notes** folder w
 
 All projects are preserved with complete Git history from the original UiO repositories.
 
-| Project   | Description                                                                 | Browse                                                                                      | Commit History                                                                             |
-| --------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Project 1 | Teque (triple-ended queue): push_front/back/middle + get with efficient ops | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig1) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Project 2 | Efficient Sets using BST + AVL, plus building balanced BST insertion order  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig2) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Project 3 | Kattunge (tree path to root) + sorting algorithms + performance metrics     | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig3) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Project 4 | IMDB graph: build large graph, shortest paths, weighted “chill” paths, CCs  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig4) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Project 5 | Mandatory submission: analysis + balanced BST + sorting + IMDB graph tasks  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig5) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
-| Notes     | Course notes: key concepts, summaries, and quick references                 | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/Notes)  | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| Project | Description                                                                 | Browse                                                                                      | Commit History                                                                             |
+| ------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| oblig1  | Teque (triple-ended queue): push_front/back/middle + get with efficient ops | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig1) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| oblig2  | Efficient Sets using BST + AVL, plus building balanced BST insertion order  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig2) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| oblig3  | Kattunge (tree path to root) + sorting algorithms + performance metrics     | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig3) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| oblig4  | IMDB graph: build large graph, shortest paths, weighted “chill” paths, CCs  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig4) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| oblig5  | Mandatory submission: analysis + balanced BST + sorting + IMDB graph tasks  | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/oblig5) | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
+| Notes   | Course notes: key concepts, summaries, and quick references                 | [Files](https://github.com/philipfleischer/Algorithms-and-Data-Structures/tree/main/Notes)  | [Commits](https://github.com/philipfleischer/Algorithms-and-Data-Structures/commits/main/) |
 
 ## Course focus
 
@@ -59,12 +59,13 @@ This provides hands-on experience with performance constraints that do not appea
 ## Repository structure
 
 IN2010-Algorithms-and-Data-Structures/
-├── oblig1/ # Teque and complexity analysis
-├── oblig2/ # Sets with BST/AVL and balanced tree construction
-├── oblig3/ # Tree traversal + sorting and performance measurement
-├── oblig4/ # Large-scale IMDB graph algorithms
-├── oblig5/ # Mandatory combined submission
-└── Notes/ # Course notes, summaries, and references
+
+- oblig1/ # Teque and complexity analysis
+- oblig2/ # Sets with BST/AVL and balanced tree construction
+- oblig3/ # Tree traversal + sorting and performance measurement
+- oblig4/ # Large-scale IMDB graph algorithms
+- oblig5/ # Mandatory combined submission
+- Notes/ # Course notes, summaries, and references
 
 ## Notes
 
